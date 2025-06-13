@@ -1,0 +1,42 @@
+{{- if eq .Values.deploymentType "build" }}
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: {{ include "openad-model.fullname" . }}
+  labels:
+    {{- include "openad-model.labels" . | nindent 4 }}
+spec:
+  source:
+    git:
+      uri: {{ .Values.buildConfig.gitUri }}
+      ref: {{ .Values.buildConfig.gitRef }}
+    contextDir: {{ .Values.buildConfig.contextDir | default "" }}
+    {{- if not (empty .Values.buildConfig.sourceSecret) }}
+    sourceSecret:
+      name: {{ .Values.buildConfig.sourceSecret.name }}
+    {{- end }}
+  strategy:
+    type: {{ .Values.buildConfig.strategy }}
+    dockerStrategy:
+      dockerfilePath: {{ .Values.buildConfig.dockerfilePath }}
+      {{- if not (empty .Values.buildConfig.sourceSecret) }}
+      volumes:
+        - name: ssh-key-volume
+          mounts:
+            - destinationPath: /root/.ssh  # SSH keys will be available here
+          source:
+            type: Secret
+            secret:
+              secretName: {{ .Values.buildConfig.sourceSecret.name }}
+              defaultMode: 0600  # set permissions
+      {{- end }}
+  triggers:
+    - type: ConfigChange  # Trigger on configuration changes
+    - type: GitHub  # Trigger on GitHub events
+      github:
+        secret: {{ .Values.buildConfig.githubSecret | default "github-webhook-secret" }}
+  output:
+    to:
+      kind: ImageStreamTag
+      name: "{{ include "openad-model.fullname" . }}:latest"
+{{- end }}

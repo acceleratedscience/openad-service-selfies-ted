@@ -7,8 +7,8 @@ deploymentType: "build"
 replicaCount: 1
 
 buildConfig:
-  gitUri: "https://github.com/indra-ipd/openad-service-selfies-ted.git" # URL of the git repository
-  gitRef: "phils" # Branch of the git repository
+  gitUri: "https://github.com/acceleratedscience/openad-service-selfies-ted.git" # URL of the git repository
+  gitRef: "main" # Branch of the git repository
   strategy: Docker
   dockerfilePath: Dockerfile # Path to the Dockerfile
   sourceSecret:

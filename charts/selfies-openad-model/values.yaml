@@ -71,7 +71,7 @@ service:
   type: ClusterIP
   # type: NodePort
   port: 80
-  targetPort: 8034 # Internal port of your application
+  targetPort: 8080 # Internal port of your application
 
 ingress:
   enabled: false
@@ -103,7 +103,7 @@ resources:
 livenessProbe:
   httpGet:
     path: /health
-    port: 8035
+    port: 8081
   initialDelaySeconds: 10
   periodSeconds: 15
   timeoutSeconds: 10
@@ -113,7 +113,7 @@ livenessProbe:
 readinessProbe:
   httpGet:
     path: /health
-    port: 8035
+    port: 8080
   initialDelaySeconds: 10
   periodSeconds: 15
   timeoutSeconds: 10

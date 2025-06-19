@@ -138,7 +138,7 @@ volumeMounts:
 aws:
   image: "amazon/aws-cli"
   args:
-    - "aws s3 sync s3://ad-stage-fm4m-algorithms/molecules/selfies_ted/qm9-homo/v0 /data/.openad_models/properties/molecules/selfies_ted/qm9-homo/v0"
+    - "aws s3 sync s3://ad-stage-fm4m-algorithms/molecules/selfies_ted /data/.openad_models/properties/molecules/selfies_ted"
   region: "us-east-2"
 
 nodeSelector: {}

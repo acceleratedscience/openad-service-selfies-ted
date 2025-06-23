@@ -145,8 +145,8 @@ class SELFIESEncoder:
 
 
 
-def load_finetuned_model(ckpt_filename="qm9-homo.pt"):
-    model = torch.load(ckpt_filename)
+def load_finetuned_model(ckpt_filename="qm9-homo.pt", map_location="cpu"):
+    model = torch.load(ckpt_filename, map_location=map_location)
     model.eval()
     tokenizer = AutoTokenizer.from_pretrained('ibm/materials.selfies-ted', trust_remote_code=True)
     return model, tokenizer

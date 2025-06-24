@@ -1,4 +1,4 @@
-# SELFIES-TED &nbsp;/&nbsp; Property Prediction on SMILES Input
+# SELFIES-TED &nbsp;/&nbsp; Property Prediction on SMILES Input with SELFIES Reperesentation
 
 <!--
 The description & support tags are consumed by the generate_docs() script
@@ -21,12 +21,12 @@ https://openad.accelerate.science/docs/model-service/available-services
 ## About
 
 <!-- description -->
-This OpenAD service provides access to **SMILES-based Transformer Encoder-Decoder** (SMI-TED), a foundation model for materials science and chemistry. SMI-TED is an encoder-decoder model pre-trained on a curated dataset of 91 million SMILES samples sourced from PubChem, equivalent to 4 billion molecular tokens. SMI-TED offers several predictive models, including quantum property prediction, with two main variants ( 289 M and 8 × 289 M ).
+This OpenAD service provides access to **SELFIES-based Transformer Encoder-Decoder** (SELFIES-TED), a foundation model for materials science and chemistry. SELFIES-TED is an encoder-decoder model pre-trained on a curated dataset of 1 billion SMILES samples encoded into SELFIES to provides a more concise and interpretable representation. The samples are sourced from PubChem and Zinc databases and encoded into SELFIES using the [selfies](https://github.com/aspuru-guzik-group/selfies) package. SELFIES-TED offers several predictive models, including quantum property prediction, and molecular generation.
 
 More information:  
 [github.com/IBM/materials](https://github.com/IBM/materials)  
-[huggingface.co/ibm/materials.smi-ted](https://huggingface.co/ibm/materials.smi-ted)  
-[arxiv.org/abs/2407.20267](https://arxiv.org/abs/2407.20267)
+[https://huggingface.co/ibm/materials.selfies-ted](https://huggingface.co/ibm/materials.selfies-ted)  
+[https://openreview.net/pdf?id=uPj9oBH80V](https://openreview.net/pdf?id=uPj9oBH80V)
 <!-- /description -->
 
 For instructions on how to deploy and use this service in OpenAD, please refer to the [OpenAD docs](https://openad.accelerate.science/docs/model-service/deploying-models).
